@@ -3,6 +3,10 @@ var fs = require('fs');
 var chess = require('./server_chess');
 io = io.listen(8081);
 
+// 使每次输出log时，都附带时间
+console._log = console.log
+console.log = (...args) => console._log(new Date().toLocaleString(), ...args)
+
 console.log('Chess server start running ...');
 
 var online_client_num = 0;
